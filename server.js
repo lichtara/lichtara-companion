@@ -3,7 +3,6 @@ import express from "express";
 import OpenAI from "openai";
 
 dotenv.config({ path: new URL(".env", import.meta.url) });
-console.log("API KEY carregada?", process.env.OPENAI_API_KEY ? "SIM" : "NÃO");
 
 const app = express();
 app.use(express.json());
