@@ -1,0 +1,32 @@
+let sessions = [];
+
+app.post("/api/session/start", (req, res) => {
+  const { title } = req.body;
+
+  sessions.push({
+    title: title || "Sem título",
+    at: new Date().toISOString()
+  });
+
+  res.json({ ok: true });
+});
+
+app.get("/api/sessions", (req, res) => {
+  res.json(sessions);
+});
+
+app.post("/api/chat", async (req, res) => {
+  const { message } = req.body;
+
+  try {
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: message
+    });
+
+    res.json({ reply: response.output[0].content[0].text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao falar com a IA" });
+  }
+});
