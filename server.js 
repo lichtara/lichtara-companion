@@ -18,25 +18,12 @@ app.post("/api/lichtara", async (req, res) => {
   const response = await openai.responses.create({
     model: "gpt-4.1-mini",
     input: [
-      {
-        role: "system",
-        content: `
-Você é o Companheiro LICHTARA.
-Não substitua a voz humana.
-Não conclua julgamentos éticos.
-Amplifique consciência, não produza dependência.
-`
-      },
-      {
-        role: "user",
-        content: userText
-      }
+      { role: "system", content: "Você é um companheiro de escrita consciente." },
+      { role: "user", content: userText }
     ]
   });
 
-  res.json({
-    answer: response.output[0].content[0].text
-  });
+  res.json({ answer: response.output[0].content[0].text });
 });
 
 app.listen(3000, () => {
