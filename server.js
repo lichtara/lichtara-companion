@@ -2,8 +2,9 @@ import dotenv from "dotenv";
 import express from "express";
 import OpenAI from "openai";
 
-dotenv.config();
+dotenv.config({ path: "./.env" });
 console.log("API KEY carregada?", process.env.OPENAI_API_KEY ? "SIM" : "NÃO");
+
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
