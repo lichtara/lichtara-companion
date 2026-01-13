@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import OpenAI from "openai";
 
-dotenv.config({ path: new URL(".env", import.meta.url) });
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -33,6 +33,7 @@ app.post("/api/chat", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🌿 LICHTARA Companion vivo na porta ${PORT}`);
 });
