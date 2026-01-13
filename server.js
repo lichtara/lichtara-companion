@@ -1,3 +1,6 @@
+let sessions = [];
+let sessions = [];
+
 import dotenv from "dotenv";
 import express from "express";
 import OpenAI from "openai";
