@@ -8,36 +8,28 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.send("LICHTARA Companion está vivo 🌱");
-});
-
-app.listen(3000, () => {
-  console.log("🌿 Servidor ativo em http://localhost:3000");
-});
-
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use(express.static("public"));
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-app.post("/api/lichtara", async (req, res) => {
-  const userText = req.body.text;
+app.get("/", (req, res) => {
+  res.send("LICHTARA Companion está vivo 🌱");
+});
 
-  const response = await openai.responses.create({
-    model: "gpt-4.1-mini",
-    input: [
-      { role: "system", content: "Você é um companheiro de escrita consciente." },
-      { role: "user", content: userText }
-    ]
-  });
+app.post("/api/chat", async (req, res) => {
+  const { message } = req.body;
 
-  res.json({ answer: response.output[0].content[0].text });
+  try {
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: message
+    });
+
+    res.json({ reply: response.output[0].content[0].text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao falar com a IA" });
+  }
 });
 
 app.listen(3000, () => {
