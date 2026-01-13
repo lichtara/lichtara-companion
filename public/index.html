@@ -19,3 +19,99 @@ async function send() {
   document.getElementById("out").innerText = data.reply;
 }
 </script>
+
+<style>
+:root {
+  --blue-deep: #0A1A2F;
+  --gold: #D4AF37;
+  --silver: #C9D2D9;
+  --offwhite: #F5F6F7;
+  --black-cosmic: #000814;
+}
+
+body {
+ <div class="app">
+  <h1>Lichtara Write</h1>
+  <div class="subtitle">
+    LICHTARA Companion — Espaço de Coautoria Consciente
+  </div>
+
+  <textarea id="msg" rows="6" placeholder="Escreva aqui o que deseja escutar com presença..."></textarea>
+
+  <button onclick="send()">Respirar com o Campo</button>
+
+  <pre id="out"></pre>
+</div>
+
+}
+
+.app {
+  max-width: 720px;
+  width: 100%;
+  padding: 48px 40px;
+}
+
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--silver);
+  margin-bottom: 36px;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--silver);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 15px;
+  color: var(--offwhite);
+  resize: vertical;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: var(--silver);
+}
+
+button {
+  margin-top: 16px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 22px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+
+pre {
+  margin-top: 28px;
+  color: var(--offwhite);
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+</style>
+
+
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+</head>
